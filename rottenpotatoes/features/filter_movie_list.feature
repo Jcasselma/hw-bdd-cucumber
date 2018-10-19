@@ -58,4 +58,10 @@ Scenario: all ratings selected
   
   Then I should see all the movies 
   
+  When I check the following ratings: R G PG
+  And I press "Refresh"
+  
+  Then I should not see the following movies: "The Help", "Chocolat"
+  
+  
   
