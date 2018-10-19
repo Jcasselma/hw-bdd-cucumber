@@ -47,21 +47,25 @@ Scenario: restrict to movies with 'PG' or 'R' ratings
   And I should not see "Chocolat"
   And I should not see "2001: A Space Odyssey"
   And I should not see "Chicken Run"
-  
-  #
+
 
 Scenario: all ratings selected
+  #Ensure that multiple ratings can be checked at once
   When I check the following ratings: R G PG PG-13
   And I press "Refresh"
   
+  #Ensure that multiple movies can be seen at once
   Then I should see the following movies: "Aladdin", "The Terminator", "Chocolat"
   
+  #Ensure all movies can be seen
   Then I should see all the movies 
   
+  #Ensure that specific ratings can be toggled at once
   When I check the following ratings: R G PG
   And I uncheck the following ratings: PG-13
   And I press "Refresh"
   
+  #Ensure that the specific ratings render the correct movies
   Then I should not see the following movies: "The Help", "Chocolat"
   
   
